@@ -3,7 +3,7 @@ services:
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./nginx
     ports:
       - '3050:80'
@@ -15,7 +15,7 @@ services:
     image: 'redis:latest'
   api:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./server
     environment:
       - REDIS_HOST=redis
@@ -27,13 +27,13 @@ services:
       - PGPORT=5432
   client:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./client
     environment:
       - WDS_SOCKET_PORT=0
   worker:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./worker
     environment:
       - REDIS_HOST=redis

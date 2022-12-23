@@ -17,7 +17,7 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push images to docker hub
   - docker push andyylsong/multi-client
-  - docker push andyylsong/multi-nignx
+  - docker push andyylsong/multi-nginx
   - docker push andyylsong/multi-server
   - docker push andyylsong/multi-worker
 
