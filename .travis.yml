@@ -13,4 +13,11 @@ after_success:
   - docker build -t andy/multi-nginx ./nginx
   - docker build -t andy/multi-server ./server
   - docker build -t andy/multi-worker ./worker
-  
+  # log in to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --pasword-stdin
+  # push images to docker hub
+  - docker push andy/multi-client
+  - docker push andy/multi-nignx
+  - docker push andy/multi-server
+  - docker push andy/multi-worker
+
